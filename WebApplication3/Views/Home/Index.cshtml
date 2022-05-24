@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication3.ViewModel.BestSellersViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to the Manga Book Store!</h1><br />
+    <h2>Here is a selection of our best selling products</h2><br />
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="controllabel col-md-3">
+                @if (item.ProductImage != null)
+                {
+                    <a href="@Url.Action("Details", "Products", new { id = item.Product.ID })">
+                        <img src="@(Url.Content(Constants.ProductImagePath) + item.ProductImage)">
+                    </a>
+                }
+                <p class="text-center">
+                    <p></p>
+                    <center>@Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.Product.ID }, null)</center>
+                </p>
+            </div>
+        }
+    </div>
+    <style>
+       #aa a.btn:hover { background-color: green; } 
+       #aa a.btn {
+             background-color: forestgreen;
+             border-radius: 10px;
+             color: #ffffff;
+             text-decoration: none;
+             border: 2px solid buttonface;
+        } 
+    </style><br />
+    <p id="aa">
+        @Html.ActionLink("Shop Now", "Index", "Products", null, new { @class = "btn btnprimary-lg" })
+    </p>
+</div> 

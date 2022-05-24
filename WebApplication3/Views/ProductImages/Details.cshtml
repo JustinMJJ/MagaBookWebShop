@@ -1,0 +1,26 @@
+﻿@model WebApplication3.Models.ProductImage
+
+@{
+    ViewBag.Title = "Product Image Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+
+    <hr />
+    <dl class="form-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt><br />
+
+        <dd>
+            @Html.EditorFor(model => model.FileName, new { htmlAttributes = new { @class= "form-control",@readonly = "readonly"}})
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
